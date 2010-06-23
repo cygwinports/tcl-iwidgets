@@ -1,0 +1,8 @@
+category: Tcl
+requires: tcl tcl-itcl tcl-itk tcl-tk
+sdesc: "Tcl/Tk widget set"
+ldesc: "[incr Widgets] is an object-oriented mega-widget set which 
+extends Tcl/Tk and is based on [incr Tcl] and [incr Tk].  This set of 
+mega-widgets delivers many new, general purpose widgets like option 
+menus, comboboxes, selection boxes, and various dialogs whose 
+couterparts are found in Motif and Windows."
