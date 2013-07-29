@@ -1,0 +1,45 @@
+ORIG_PN="iwidgets"
+inherit tcl
+
+NAME="tcl-iwidgets"
+VERSION=4.0.1
+RELEASE=1
+CATEGORY="Tcl"
+SUMMARY="Tcl/Tk widget set"
+DESCRIPTION="[incr Widgets] is an object-oriented mega-widget set which
+extends Tcl/Tk and is based on [incr Tcl] and [incr Tk].  This set of
+mega-widgets delivers many new, general purpose widgets like option menus,
+comboboxes, selection boxes, and various dialogs whose couterparts are found
+in Motif and Windows."
+HOMEPAGE="http://incrtcl.sourceforge.net/"
+SRC_URI="mirror://sourceforge/incrtcl/iwidgets${VERSION}.tar.gz"
+SRC_DIR="iwidgets${VERSION}"
+
+DISTCLEANFILES="aclocal.m4"
+
+src_compile() {
+	sed -e 's|\@ITCL_VERSION\@|3.4|g' -e "s|\@VERSION\@|${VERSION}|g" \
+		${S}/iwidgets.tcl.in > ${B}/iwidgets.tcl
+	sed -e 's|\@ITCL_VERSION\@|3.4|g' -e "s|\@VERSION\@|${VERSION}|g" \
+		${S}/pkgIndex.tcl.in > ${B}/pkgIndex.tcl
+}
+
+src_install() {
+	cd ${B}
+	insinto /usr/lib/iwidgets${VERSION}
+	doins iwidgets.tcl pkgIndex.tcl
+
+	cd ${S}
+	insinto /usr/lib/iwidgets${VERSION}/scripts
+	doins generic/*
+
+#	cp -r demos ${D}/usr/lib/iwidgets${VERSION}/
+
+	cd ${S}/doc
+	dodir /usr/share/man/mann
+	for i in *.n
+	do
+		sed -e '/man\.macros/r man.macros' -e '/man\.macros/d' \
+			$i > ${D}/usr/share/man/mann/`basename iwidgets_$i`
+	done
+}
