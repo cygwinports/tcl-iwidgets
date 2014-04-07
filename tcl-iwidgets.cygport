@@ -3,7 +3,7 @@ inherit tcl
 
 NAME="tcl-iwidgets"
 VERSION=4.0.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Tcl"
 SUMMARY="Tcl/Tk widget set"
 DESCRIPTION="[incr Widgets] is an object-oriented mega-widget set which
@@ -18,9 +18,9 @@ SRC_DIR="iwidgets${VERSION}"
 DISTCLEANFILES="aclocal.m4"
 
 src_compile() {
-	sed -e 's|\@ITCL_VERSION\@|3.4|g' -e "s|\@VERSION\@|${VERSION}|g" \
+	sed -e 's|\@ITCL_VERSION\@|3.3|g' -e "s|\@VERSION\@|${VERSION}|g" \
 		${S}/iwidgets.tcl.in > ${B}/iwidgets.tcl
-	sed -e 's|\@ITCL_VERSION\@|3.4|g' -e "s|\@VERSION\@|${VERSION}|g" \
+	sed -e 's|\@ITCL_VERSION\@|3.3|g' -e "s|\@VERSION\@|${VERSION}|g" \
 		${S}/pkgIndex.tcl.in > ${B}/pkgIndex.tcl
 }
 
