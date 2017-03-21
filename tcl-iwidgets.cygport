@@ -3,7 +3,7 @@ inherit tcl
 
 NAME="tcl-iwidgets"
 VERSION=4.0.1
-RELEASE=2
+RELEASE=3
 CATEGORY="Tcl"
 SUMMARY="Tcl/Tk widget set"
 DESCRIPTION="[incr Widgets] is an object-oriented mega-widget set which
@@ -14,6 +14,11 @@ in Motif and Windows."
 HOMEPAGE="http://incrtcl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/incrtcl/iwidgets${VERSION}.tar.gz"
 SRC_DIR="iwidgets${VERSION}"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/rpms/iwidgets.git/plain/iwidgets4.0.1-calls.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/iwidgets.git/plain/iwidgets4.0.1-wish85.diff
+	http://pkgs.fedoraproject.org/cgit/rpms/iwidgets.git/plain/iwidgets4.0.2-itk4.patch
+"
 
 ARCH=noarch
 
